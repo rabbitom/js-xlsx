@@ -11091,8 +11091,7 @@ function evert_arr(obj) {
 	return o;
 }
 
-var basedate = new Date(1899, 11, 30, 0, 0, 0); // 2209161600000
-var dnthresh = basedate.getTime() + (new Date().getTimezoneOffset() - basedate.getTimezoneOffset()) * 60000;
+var dnthresh = -2209161600000 + new Date().getTimezoneOffset() * 60000;//Sat, 30 Dec 1899 00:00:00 GMT
 function datenum(v, date1904) {
 	var epoch = v.getTime();
 	if(date1904) epoch -= 1462*24*60*60*1000;
@@ -27264,7 +27263,7 @@ var HTML_ = (function() {
 				var _t = tag.t || "";
 				/* TODO: generate stub cells */
 				if(!m.length) { C += CS; continue; }
-				m = htmldecode(unescapexml(m));
+				m = htmldecode(m);
 				if(range.s.r > R) range.s.r = R; if(range.e.r < R) range.e.r = R;
 				if(range.s.c > C) range.s.c = C; if(range.e.c < C) range.e.c = C;
 				if(!m.length) continue;
